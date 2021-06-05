@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchTemperature } from '../redux/temperature/temperatureActions'
+import { fetchTemperature } from '../redux/temperature/t-act'
 
 const WeatherView = ({ tempData, fetchTemperature }) => {
     useEffect(() => {
@@ -21,8 +21,9 @@ const WeatherView = ({ tempData, fetchTemperature }) => {
         return (
           <div className='p-2 d-flex flex-column align-items-center'>
             {" "}
-            <h1 className='text-light'>{tempData.temp} Celcius</h1>
-            <p className='text-white-50'>Rajasthan , Jaipur, India.</p>
+            <h1 className='text-light'>
+              {tempData.temp ? `${tempData.temp} Celcius`:''}</h1>
+            <p className='text-white-50'>{tempData.city}</p>
           </div>
         );
       };
@@ -30,7 +31,6 @@ const WeatherView = ({ tempData, fetchTemperature }) => {
       return (
         <div
           style={{
-            height: "300px",
             display: "flex",
             justifyContent: "center",
             paddingTop: "50px",
